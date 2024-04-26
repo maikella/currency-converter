@@ -1,3 +1,6 @@
+package menu;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -10,11 +13,11 @@ public class Menu {
         builder = new StringBuilder();
         convertTo = new ConvertTo();
         scanner = new Scanner(System.in);
-
     }
 
 
     public void menu(){
+
         builder.append("Conversor de moedas").append("\n")
                 .append("1 Real Brasileiro > Dolar")
                 .append("\n")
@@ -29,27 +32,44 @@ public class Menu {
                 .append("6 Real Brasileiro > Dolar canadence")
                 .append("\n")
                 .append("7 Sair");
+
         System.out.println(builder);
-//                convertTo.dolarToReal();
 
-//        convertTo.euroToReal();
-        int choice = scanner.nextInt();
-
-        switch (choice){
-           case 1: convertTo.realToDolar();
-           break;
+        switch (getMenuValue()){
+            case 1: convertTo.realToDolar();
+                break;
             case 2: convertTo.dolarToReal();
-            break;
+                break;
             case 3: convertTo.euroToReal();
-            break;
+                break;
             case 4: convertTo.realToEuro();
-            break;
+                break;
             case 5: convertTo.dolarCanadenceToReal();
-            break;
+                break;
             case 6: convertTo.realToDolarCanadence();
-            break;
+                break;
             case 7: System.exit(0);
         }
+    }
 
+    private int getMenuValue() {
+        int choice = 0;
+        try {
+            choice = scanner.nextInt();
+            if(checkMenuValue(choice)){
+                throw new IllegalArgumentException("apenas valores de 1 a 7");
+            }
+        } catch (InputMismatchException e) {
+            throw new InputMismatchException("valor inválido");
+        }
+
+        return choice;
+    }
+
+    private boolean checkMenuValue(int value){
+        if (value >= 1 && value <= 7){
+            return false;
+        }
+        return true;
     }
 }

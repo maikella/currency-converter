@@ -1,9 +1,11 @@
-import sun.net.www.protocol.https.HttpsURLConnectionImpl;
+package deserialize;
+
+import deserialize.FromJson;
+import url.Url;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -11,12 +13,11 @@ import java.net.URL;
 
 public class Code {
 
-    public void getCode(){
+    public static Currencies getCode(){
         URL url;
         HttpsURLConnection connection;
         try {
-
-            url = new URL("https://v6.exchangerate-api.com/v6/f43ec2f4eff42f0af3f2f521/codes");
+            url = new URL(Url.BASE_URL+"/codes");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -60,6 +61,6 @@ public class Code {
         System.out.println(builder);
 
         FromJson fromJson = new FromJson();
-        fromJson.deserialize(builder.toString());
+        return fromJson.deserialize(builder.toString());
     }
 }

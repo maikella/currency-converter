@@ -2,6 +2,10 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+.idea
+
+### Gson
+.iml
 
 ### Eclipse ###
 .apt_generated
@@ -22,7 +26,7 @@ bin/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+### VS deserialize.Code ###
 .vscode/
 
 ### Mac OS ###
