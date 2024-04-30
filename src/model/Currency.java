@@ -1,4 +1,4 @@
-package deserialize;
+package model;
 
 public final class Currency {
     private final String NAME, CODE;
@@ -20,4 +20,5 @@ public final class Currency {
     public String toString() {
         return "{"+CODE+", "+NAME+"}";
     }
+
 }

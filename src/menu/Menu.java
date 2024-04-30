@@ -1,24 +1,28 @@
 package menu;
 
+import service.ConvertCurrencies;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
 
     StringBuilder builder;
-    ConvertTo convertTo;
+    ConvertCurrencies convertCurrencies;
     Scanner scanner;
 
     public Menu() {
         builder = new StringBuilder();
-        convertTo = new ConvertTo();
+        convertCurrencies = new ConvertCurrencies();
         scanner = new Scanner(System.in);
     }
 
 
     public void menu(){
 
-        builder.append("Conversor de moedas").append("\n")
+        builder.append("\n")
+                .append("Conversor de moedas")
+                .append("\n")
                 .append("1 Real Brasileiro > Dolar")
                 .append("\n")
                 .append("2 Dolar > Real Brasileiro")
@@ -36,24 +40,24 @@ public class Menu {
         System.out.println(builder);
 
         switch (getMenuValue()){
-            case 1: convertTo.realToDolar();
+            case 1: convertCurrencies.realToDolar();
                 break;
-            case 2: convertTo.dolarToReal();
+            case 2: convertCurrencies.dolarToReal();
                 break;
-            case 3: convertTo.euroToReal();
+            case 3: convertCurrencies.euroToReal();
                 break;
-            case 4: convertTo.realToEuro();
+            case 4: convertCurrencies.realToEuro();
                 break;
-            case 5: convertTo.dolarCanadenceToReal();
+            case 5: convertCurrencies.dolarCanadenceToReal();
                 break;
-            case 6: convertTo.realToDolarCanadence();
+            case 6: convertCurrencies.realToDolarCanadence();
                 break;
             case 7: System.exit(0);
         }
     }
 
     private int getMenuValue() {
-        int choice = 0;
+        int choice;
         try {
             choice = scanner.nextInt();
             if(checkMenuValue(choice)){
