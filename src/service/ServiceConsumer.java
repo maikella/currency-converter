@@ -37,6 +37,7 @@ public class ServiceConsumer {
         }
 
         connection.disconnect();
+        System.out.println("1 "+builder.toString());
         return builder.toString();
     }
 

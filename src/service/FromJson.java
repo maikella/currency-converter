@@ -38,6 +38,7 @@ public class FromJson {
 
             String codesMyList;
 
+
             for (int i = 0; i < currencies.size(); i++) {
                 elements = currencies.get(i).getAsJsonArray();
                 codesJson = elements.get(0).getAsString();
